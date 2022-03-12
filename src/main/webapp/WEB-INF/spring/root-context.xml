@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 객체생성을 하나의 파일로 해서 필요로 하는 곳에 전달 -->
+	
+	<!-- MemberController객체생성 
+	       => MemberServiceImpl 객체생성한 MemberService 참조변수이름(주소)을 받아서 
+	          MemberController파일에 (방법1) 생성자를 호출하면서 전달
+                                   (방법2) set메서드를 호출하면서 값전달 -->
+ 	<!-- 스프링 xml에서 객체생성하는 방법  id는 참조변수이름(앞자리가 소문자)-->
+ 	<bean id="memberController" class="com.itwillbs.controller.MemberController">
+ 		<property name="memberService" ref="memberService"></property><!-- set메서드 -->
+ 	</bean>                                  
+<!--  		<constructor-arg name="memberService" ref="memberService"></constructor-arg>생성자
+ -->	      
+	<!-- MemberService memberService = new MemberServiceImpl(); 
+		   => MemberDAOImpl객체생성한 MemberDAO 참조변수이름(주소)를 받아서 
+		 	  MemberServiceImpl에 전달 (방법1) 생성자를 호출하면서 전달
+                                     (방법2) set메서드를 호출하면서 값전달 -->
+	<bean id="memberService" class="com.itwillbs.service.MemberServiceImpl">
+		<property name="memberDAO" ref="memberDAO"></property>
+	</bean>                                     	
+	       	
+		 
+	<!-- MemberDAO memberDAO = new MemberDAOImpl(); 
+	       => DB연결작업 객체생성한 참조변수이름을 받아서 MemberDAOImpl에 
+	                                 (방법1) 생성자를 호출하면서 전달
+                                     (방법2) set메서드를 호출하면서 값전달 -->
+ 	<bean id="memberDAO" class="com.itwillbs.dao.MemberDAOImpl">
+ 		<property name="dataSource" ref="dataSource"></property>
+ 	</bean> 
+	
+	<!-- 1,2단계 DB연결 -->    
+ 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+ 		<property name="url" value="jdbc:mysql://localhost:3306/jspdb1?useSSL=false"></property>
+ 		<property name="username" value="root"></property>
+ 		<property name="password" value="1234"></property>
+ 	</bean>
+ 	                                
+</beans>
