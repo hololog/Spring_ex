@@ -27,7 +27,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public void insertMember(MemberDTO memberDTO) {
 		// 처리작업
 		System.out.println("MemberDAOImpl insertmember()");
-		//DB작업
+		//DB작업 (sql만들고 실행 update() insert, delete)
 		template.update(insertsql, memberDTO.getId(), memberDTO.getPass(), memberDTO.getName(), memberDTO.getDate());
 	}
 }
