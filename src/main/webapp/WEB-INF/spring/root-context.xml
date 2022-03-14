@@ -14,8 +14,8 @@
  	<bean id="memberController" class="com.itwillbs.controller.MemberController">
  		<property name="memberService" ref="memberService"></property><!-- set메서드 -->
  	</bean>                                  
-<!--  		<constructor-arg name="memberService" ref="memberService"></constructor-arg>생성자
- -->	      
+    <!-- 생성자 이용방법 : <constructor-arg name="memberService" ref="memberService"></constructor-arg>생성자 -->	      
+	
 	<!-- MemberService memberService = new MemberServiceImpl(); 
 		   => MemberDAOImpl객체생성한 MemberDAO 참조변수이름(주소)를 받아서 
 		 	  MemberServiceImpl에 전달 (방법1) 생성자를 호출하면서 전달

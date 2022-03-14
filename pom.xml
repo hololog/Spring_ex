@@ -36,14 +36,14 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
-		<!-- mysql connector -->
+		<!-- MYSQL connector -->
 		<dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>5.1.39</version>
 		</dependency>
 		
-		<!-- jdbc -->
+		<!-- JDBC -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
